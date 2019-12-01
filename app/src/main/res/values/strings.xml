@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MealKitDeliveryApp</string>
+    <string name="title_activity_explore">ExploreActivity</string>
+    <string name="large_text">
+
+    </string>
+    <string name="action_settings">Settings</string>
 </resources>

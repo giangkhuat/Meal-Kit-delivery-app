@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "894721408509",
+    "firebase_url": "https://cookingeasy-64b7b.firebaseio.com",
+    "project_id": "cookingeasy-64b7b",
+    "storage_bucket": "cookingeasy-64b7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894721408509:android:509da1fcb327816264ed94",
+        "android_client_info": {
+          "package_name": "com.ait.mealkitdeliveryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894721408509-v19u33ls366tcuqfkdj4539okvra6m7f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ait.mealkitdeliveryapp",
+            "certificate_hash": "d1b72dfa924e00c2ee6b2ccd9b2cd680bd260167"
+          }
+        },
+        {
+          "client_id": "894721408509-ubomkt78aicldl1a9dodkg3fvrhsu68f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBapWQauDSBxxSINdiAi1Qsc6EGkRMAj7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894721408509-ubomkt78aicldl1a9dodkg3fvrhsu68f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
