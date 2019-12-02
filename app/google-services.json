@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "894721408509-q8dqivg3o994g360ael9togjo5rkonc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ait.mealkitdeliveryapp",
+            "certificate_hash": "040bdd27705ce3bcea87f408d6d112257e64fe2c"
+          }
+        },
+        {
           "client_id": "894721408509-v19u33ls366tcuqfkdj4539okvra6m7f.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

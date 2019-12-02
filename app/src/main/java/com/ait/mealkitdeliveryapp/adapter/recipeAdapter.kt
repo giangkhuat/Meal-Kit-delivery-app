@@ -10,15 +10,17 @@ import com.ait.mealkitdeliveryapp.data.recipe
 import kotlinx.android.synthetic.main.recipe_card.view.*
 import java.util.*
 
-class recipeAdapter : RecyclerView.Adapter<recipeAdapter.ViewHolder> {
+class recipeAdapter(
+private val context: Context
+) : RecyclerView.Adapter<recipeAdapter.ViewHolder>() {
 
-    var recipelist  = mutableListOf<recipe>()
-    var context: Context
+    var recipeList  = mutableListOf<recipe>()
+    private var recipeKeys = mutableListOf<String>()
 
-    constructor(context: Context, items: List<recipe>) {
-        this.context = context
-        recipelist.addAll(items)
-    }
+//    constructor(context: Context, items: List<recipe>) {
+//        this.context = context
+//        recipeList.addAll(items)
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         /* define layout of one ShopItem  outside actiity */
@@ -28,15 +30,20 @@ class recipeAdapter : RecyclerView.Adapter<recipeAdapter.ViewHolder> {
         return ViewHolder(item)
     }
     override fun getItemCount(): Int {
-        return recipelist.size
+        return recipeList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var item = recipelist.get(holder.adapterPosition)
 
         holder.recipeCard.setOnClickListener{
             //intent
         }
+
+        var recipe = recipeList[position]
+
+        holder.tvProduct_name.setText(recipe.name)
+        holder.tvDescription.setText(recipe.description)
+        holder.tvPrice.setText(recipe.price.toString())
     }
 
     /*
@@ -51,9 +58,11 @@ class recipeAdapter : RecyclerView.Adapter<recipeAdapter.ViewHolder> {
     }
 
     */
-    fun addItem(recipe : recipe) {
-        recipelist.add(recipe)
-        notifyItemInserted(recipelist.lastIndex)
+    fun addRecipe(recipe : recipe, key: String) {
+        recipeList.add(recipe)
+        recipeKeys.add(key)
+
+        notifyDataSetChanged()
     }
 
     /*
