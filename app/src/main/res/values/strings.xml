@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">MealKitDeliveryApp</string>
     <string name="title_activity_explore">ExploreActivity</string>
-    <string name="large_text">
-
-    </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_meal_details">MealDetailsActivity</string>
     <string name="tab_text_1">Ingredients</string>
     <string name="tab_text_2">Directions</string>
     <string name="tab_text_3">Nutrition</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Explore</string>
+    <string name="title_dashboard">My Order</string>
+    <string name="title_notifications">Help</string>
 </resources>

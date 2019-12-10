@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.recipe_card.view.*
 import java.util.*
 
 class recipeAdapter(
-private val context: Context
+private val context: Context?
 ) : RecyclerView.Adapter<recipeAdapter.ViewHolder>() {
 
     var recipeList  = mutableListOf<recipe>()

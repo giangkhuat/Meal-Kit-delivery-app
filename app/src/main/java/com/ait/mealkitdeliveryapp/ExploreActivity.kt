@@ -1,68 +1,29 @@
 package com.ait.mealkitdeliveryapp
 
 import android.os.Bundle
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.ait.mealkitdeliveryapp.adapter.recipeAdapter
-import com.ait.mealkitdeliveryapp.data.recipe
-import com.google.firebase.firestore.EventListener
-import kotlinx.android.synthetic.main.activity_explore.*
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 
 class ExploreActivity : AppCompatActivity() {
 
-    lateinit var rAdapter: recipeAdapter
-    var items  = mutableListOf<recipe>()
-
-    // var items = AppDatabase.getInstance(this@ScrollingActivity).ItemDao().getALlItems()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_explore)
-        setSupportActionBar(toolbar)
+        setContentView(R.layout.activity_explore2)
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-
-        rAdapter = recipeAdapter(this)
-
-        var linLayoutManger = LinearLayoutManager(this)
-        linLayoutManger.stackFromEnd = true
-
-        recyclerRecipes.layoutManager = linLayoutManger
-
-        recyclerRecipes.adapter = rAdapter
-
-        queryPosts()
+        val navController = findNavController(R.id.nav_host_fragment)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
-
-    private fun queryPosts() {
-        val db = FirebaseFirestore.getInstance()
-        val query = db.collection("RecipeBook")
-
-        var allPostsListener = query.addSnapshotListener(
-            object: EventListener<QuerySnapshot> {
-                override fun onEvent(querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException?) {
-
-//                    if (e != null) {
-//                        Toast.makeText(this@ForumActivity, "listen error: ${e.message}", Toast.LENGTH_LONG).show()
-//                        return
-//                    }
-
-                    for (dc in querySnapshot!!.getDocumentChanges()) {
-                        when (dc.getType()) {
-                            DocumentChange.Type.ADDED -> {
-                                val recipe = dc.document.toObject(recipe::class.java)
-//                                recipeAdapter.addRecipe(recipe, dc.document.id)
-                                rAdapter.addRecipe(recipe, dc.document.id)
-                            }
-                            DocumentChange.Type.MODIFIED -> {
-                                Toast.makeText(this@ExploreActivity, "update: ${dc.document.id}", Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-                }
-            })
-
-    }
-
 }
