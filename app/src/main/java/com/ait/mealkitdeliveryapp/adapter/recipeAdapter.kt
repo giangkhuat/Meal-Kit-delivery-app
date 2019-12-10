@@ -48,9 +48,11 @@ private val context: Context?
         holder.recipeCard.setOnClickListener{
             //intent
             val details = Intent(context, MealDetailsActivity::class.java)
+            details.putExtra("RecipeName", recipe.name)
             details.putExtra("Ingredients", recipe.ingredient)
             details.putExtra("Directions", recipe.instruction)
             details.putExtra("Nutrition", recipe.nutrition)
+            details.putExtra("Price", recipe.price.toString())
             (context as ExploreActivity).startActivity(details)
         }
     }
@@ -70,6 +72,8 @@ private val context: Context?
     fun addRecipe(recipe : recipe, key: String) {
         recipeList.add(recipe)
         recipeKeys.add(key)
+
+
 
         notifyDataSetChanged()
     }

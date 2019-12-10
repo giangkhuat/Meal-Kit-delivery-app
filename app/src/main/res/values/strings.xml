@@ -6,6 +6,7 @@
     <string name="tab_text_1">Ingredients</string>
     <string name="tab_text_2">Directions</string>
     <string name="tab_text_3">Nutrition</string>
+    <string name="message">Order</string>
     <string name="title_home">Explore</string>
     <string name="title_dashboard">My Order</string>
     <string name="title_notifications">Help</string>
