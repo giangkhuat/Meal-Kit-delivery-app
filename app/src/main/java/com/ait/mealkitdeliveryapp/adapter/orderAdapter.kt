@@ -12,21 +12,21 @@ import kotlinx.android.synthetic.main.order_card.view.*
 import kotlinx.android.synthetic.main.recipe_card.view.*
 
 
-class orderAdapter(
-    private val context: Context?
-) : RecyclerView.Adapter<orderAdapter.ViewHolder>() {
+class orderAdapter(private val context: Context?, private val uid: String) : RecyclerView.Adapter<orderAdapter.ViewHolder>() {
 
-    var orderList  = mutableListOf<recipe>()
+   // var orderList = HashMap<String, Int> ()
   //  private var recipeKeys = mutableListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        /* define layout of one ShopItem  outside actiity */
         var item = LayoutInflater.from(context).inflate(
             R.layout.order_card, parent, false
         )
         return ViewHolder(item)
     }
     override fun getItemCount(): Int {
+        if (orderList == null) {
+            return 0;
+        }
         return orderList.size
     }
 
@@ -35,6 +35,7 @@ class orderAdapter(
         var item = orderList.get(holder.adapterPosition)
         holder.orderName.text = item.name.toString()
         holder.price.text = item.price.toString()
+        holder.orderAmount = item.tvAmount.toString()
         holder.btnDel.setOnClickListener() {
             // deleteItem(holder.adapterPosition)
         }
@@ -90,6 +91,7 @@ class orderAdapter(
         var orderName = itemView.tvOrderName
         var price = itemView.tvOrderPrice
         var btnDel = itemView.btnDelete
+        var orderAmount = itemView.tvAmount
     }
 
 

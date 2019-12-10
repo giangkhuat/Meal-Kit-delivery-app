@@ -54,6 +54,12 @@
                 android:layout_below="@+id/tvOrderName"
                 android:textColor="#800000"/>
 
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount Num"/>
+
 
             <Button
                 android:id="@+id/btnDelete"

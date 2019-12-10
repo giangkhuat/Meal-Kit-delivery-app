@@ -1,6 +1,7 @@
 package com.ait.mealkitdeliveryapp.data
 
 data class recipe (
+    var uid : String = "",
     var name : String = "",
     var ingredient : String = "",
     var description: String = "",
