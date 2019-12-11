@@ -51,6 +51,13 @@ class orderAdapter(private val context: Context?, private val uid: String) : Rec
         notifyDataSetChanged()
     }
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var orderName = itemView.tvOrderName
+        var price = itemView.tvOrderPrice
+        var btnDel = itemView.btnDelete
+        var orderAmount = itemView.tvAmount
+        var address = itemView.tvAddress
+    }
 
     /*
     fun deleteItem(index: Int) {
@@ -97,13 +104,7 @@ class orderAdapter(private val context: Context?, private val uid: String) : Rec
 
      */
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var orderName = itemView.tvOrderName
-        var price = itemView.tvOrderPrice
-        var btnDel = itemView.btnDelete
-        var orderAmount = itemView.tvAmount
-        var address = itemView.tvAddress
-    }
+
 
 
 }
