@@ -60,6 +60,19 @@
                 android:layout_height="wrap_content"
                 android:text="Amount Num"/>
 
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:layout_alignParentBottom="true"
+                android:layout_alignBottom="@id/tvOrderPrice"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textSize="22sp"
+                android:textColor="#800000"
+                />
+
 
             <Button
                 android:id="@+id/btnDelete"

@@ -6,5 +6,5 @@ data class user (
     var contactEmail : String = "",
     var address : String = "",
     var phoneNumber : String = "",
-    var orderMap : HashMap<String, Int> = HashMap<String, Int> ()
+    var orderLst : MutableList<order> = mutableListOf<order>()
 )

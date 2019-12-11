@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ait.mealkitdeliveryapp.ExploreActivity
 import com.ait.mealkitdeliveryapp.R
+import com.ait.mealkitdeliveryapp.data.order
 import com.ait.mealkitdeliveryapp.data.recipe
 import kotlinx.android.synthetic.main.order_card.view.*
 import kotlinx.android.synthetic.main.recipe_card.view.*
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.recipe_card.view.*
 
 class orderAdapter(private val context: Context?, private val uid: String) : RecyclerView.Adapter<orderAdapter.ViewHolder>() {
 
-   // var orderList = HashMap<String, Int> ()
+   private var orderList = mutableListOf<order>()
   //  private var recipeKeys = mutableListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,12 +34,21 @@ class orderAdapter(private val context: Context?, private val uid: String) : Rec
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var item = orderList.get(holder.adapterPosition)
-        holder.orderName.text = item.name.toString()
-        holder.price.text = item.price.toString()
-        holder.orderAmount = item.tvAmount.toString()
+        holder.orderName.text = item.recipeName.toString()
+        holder.price.text = item.cost.toString()
+        holder.orderAmount.text = item.quantity.toString()
+        holder.address.text = item.address.toString()
         holder.btnDel.setOnClickListener() {
             // deleteItem(holder.adapterPosition)
         }
+    }
+
+    // need to add to database as well
+
+    fun addOrders(UserOrder : order) {
+        orderList.add(UserOrder)
+        //recipeKeys.add(key)
+        notifyDataSetChanged()
     }
 
 
@@ -92,6 +102,7 @@ class orderAdapter(private val context: Context?, private val uid: String) : Rec
         var price = itemView.tvOrderPrice
         var btnDel = itemView.btnDelete
         var orderAmount = itemView.tvAmount
+        var address = itemView.tvAddress
     }
 
 
