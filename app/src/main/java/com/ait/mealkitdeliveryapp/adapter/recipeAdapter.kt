@@ -57,6 +57,13 @@ private val context: Context?
         }
     }
 
+    fun addRecipe(recipe : recipe, key: String) {
+        recipeList.add(recipe)
+       // recipeKeys.add(key)
+
+        notifyDataSetChanged()
+    }
+
     /*
     fun deleteItem(index: Int) {
         Thread {
@@ -66,17 +73,12 @@ private val context: Context?
                 notifyItemRemoved(index)
             }
         }.start()
-    }
-
-    */
-    fun addRecipe(recipe : recipe, key: String) {
-        recipeList.add(recipe)
-        recipeKeys.add(key)
-
-
-
         notifyDataSetChanged()
+
     }
+
+     */
+
 
     /*
     fun deleteAllItems() {
