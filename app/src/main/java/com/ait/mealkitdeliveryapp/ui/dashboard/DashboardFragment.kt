@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ait.mealkitdeliveryapp.MealDetailsActivity
 import com.ait.mealkitdeliveryapp.adapter.orderAdapter
 import com.ait.mealkitdeliveryapp.data.order
 import com.ait.mealkitdeliveryapp.data.recipe
@@ -34,12 +35,12 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
+
+
         return root
     }
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -81,8 +82,8 @@ class DashboardFragment : Fragment() {
                         when (dc.getType()) {
                             DocumentChange.Type.ADDED -> {
                                 val newOrder = dc.document.toObject(order::class.java)
-                                /* sb just added a psot, make it visible to the adapter */
-                                userOrderAdapter.addOrders(newOrder)
+                                /* sb just added a post, make it visible to the adapter */
+                                userOrderAdapter.addOrder(newOrder)
                             }
                             DocumentChange.Type.MODIFIED -> {
                                 Toast.makeText(activity, "update: ${dc.document.id}", Toast.LENGTH_LONG).show()

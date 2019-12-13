@@ -45,8 +45,8 @@ class orderAdapter(private val context: Context?, private val uid: String) : Rec
 
     // need to add to database as well
 
-    fun addOrders(UserOrder : order) {
-        orderList.add(UserOrder)
+    fun addOrder(UserOrder : order) {
+        orderList.add(0, UserOrder)
         //recipeKeys.add(key)
         notifyDataSetChanged()
     }

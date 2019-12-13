@@ -11,12 +11,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.ait.mealkitdeliveryapp.ui.main.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.fragment_ingredients_tab.*
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.input.input
+import com.ait.mealkitdeliveryapp.adapter.orderAdapter
+import com.ait.mealkitdeliveryapp.data.order
+import com.ait.mealkitdeliveryapp.ui.dashboard.DashboardFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.place_order_dialog.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MealDetailsActivity : AppCompatActivity() {
@@ -30,6 +38,8 @@ class MealDetailsActivity : AppCompatActivity() {
 
     }
 
+    lateinit var orderAdapter: orderAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal_details)
@@ -39,6 +49,8 @@ class MealDetailsActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = findViewById(R.id.fab)
+
+        //orderAdapter = ((DashboardFragment).this.getActivity()).userOrderAdapter
 
         val intent = getIntent()//intent.getStringExtra("Ingredients")
 
@@ -62,6 +74,9 @@ class MealDetailsActivity : AppCompatActivity() {
             tvRecipeName.text = RECIPE
             tvCost.text = PRICE
 
+            val orderDate = Date(System.currentTimeMillis())
+            val sdf = SimpleDateFormat("MMM d, yyyy")
+
             etItemQuantity.setOnKeyListener(View.OnKeyListener{ v, keyCode, event->
                 if(event.action == KeyEvent.ACTION_UP){
                     //PerformCode
@@ -72,7 +87,27 @@ class MealDetailsActivity : AppCompatActivity() {
                 false
             })
 
-            positiveButton(text = "Place Order")
+
+            positiveButton(text = "Place Order") { dialog ->
+
+                var order = order(
+                    FirebaseAuth.getInstance().currentUser!!.uid,
+                    tvRecipeName.text.toString(),
+                    etItemQuantity.text.toString().toInt(),
+                    tvCost.text.toString().toFloat(),
+                    etDeliveryAddress.text.toString(),
+                    sdf.format(orderDate)
+                )
+
+                var ordersCollection =
+                    FirebaseFirestore.getInstance().collection("Orders")
+
+                ordersCollection.add(order).addOnSuccessListener {
+                    finish()
+                }.addOnFailureListener {
+                }
+
+            }
             negativeButton(text = "Cancel")
         }
         dialog.show()
