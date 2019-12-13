@@ -83,7 +83,10 @@ class DashboardFragment : Fragment() {
                             DocumentChange.Type.ADDED -> {
                                 val newOrder = dc.document.toObject(order::class.java)
                                 /* sb just added a post, make it visible to the adapter */
-                                userOrderAdapter.addOrder(newOrder)
+                                if (newOrder.uid == FirebaseAuth.getInstance().currentUser!!.uid) {
+                                    userOrderAdapter.addOrder(newOrder)
+                                }
+
                             }
                             DocumentChange.Type.MODIFIED -> {
                                 Toast.makeText(activity, "update: ${dc.document.id}", Toast.LENGTH_LONG).show()
