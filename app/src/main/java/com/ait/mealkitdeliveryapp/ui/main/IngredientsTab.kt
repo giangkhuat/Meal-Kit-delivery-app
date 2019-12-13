@@ -15,7 +15,7 @@ class IngredientsTab(var ingredients: String): Fragment() {
         // Inflate the layout for this fragment
 //        tvIngredientsTab.text = ingredients
         val root = inflater!!.inflate(R.layout.fragment_ingredients_tab, container, false)
-        root.tvIngredientsTab.setText(ingredients)
+        root.tvIngredientsTab.setText(ingredients.replace("~!", System.lineSeparator()))
         return root
 
     }

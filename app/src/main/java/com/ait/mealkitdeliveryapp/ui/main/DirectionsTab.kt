@@ -15,7 +15,7 @@ class DirectionsTab(var directions: String): Fragment() {
         // Inflate the layout for this fragment
 //        tvIngredientsTab.text = ingredients
         val root = inflater!!.inflate(R.layout.fragment_directions_tab, container, false)
-        root.tvDirectionsTab.setText(directions)
+        root.tvDirectionsTab.setText(directions.replace("~!", System.lineSeparator()))
         return root
 
     }
