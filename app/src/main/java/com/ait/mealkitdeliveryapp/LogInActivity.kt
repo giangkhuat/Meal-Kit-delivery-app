@@ -21,6 +21,7 @@ class LogInActivity : AppCompatActivity() {
         // then open another activity
         // else give error message
         if (!isFormValid()) {
+            Toast.makeText(this@LogInActivity, "Form is invalid", Toast.LENGTH_LONG).show()
             return
         }
         FirebaseAuth.getInstance().signInWithEmailAndPassword(
@@ -28,6 +29,7 @@ class LogInActivity : AppCompatActivity() {
         ). addOnSuccessListener {
             Toast.makeText(this@LogInActivity, "You are logged in", Toast.LENGTH_LONG).show()
             // open forum activity
+            finish()
             startActivity(Intent(this@LogInActivity, ExploreActivity::class.java))
         }.addOnFailureListener {
             Toast.makeText(

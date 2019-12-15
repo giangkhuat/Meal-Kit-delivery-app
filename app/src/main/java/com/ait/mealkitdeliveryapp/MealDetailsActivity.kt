@@ -48,11 +48,10 @@ class MealDetailsActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = findViewById(R.id.fab)
+        val btnOrder: FloatingActionButton = findViewById(R.id.fab)
 
-        //orderAdapter = ((DashboardFragment).this.getActivity()).userOrderAdapter
 
-        val intent = getIntent()//intent.getStringExtra("Ingredients")
+        val intent = getIntent()
 
         RECIPE = intent.getStringExtra("RecipeName")
         INGREDIENTS = intent.getStringExtra("Ingredients")
@@ -61,8 +60,13 @@ class MealDetailsActivity : AppCompatActivity() {
         PRICE = intent.getStringExtra("Price")
 
 
-        fab.setOnClickListener { view ->
-            showPlaceOrderDialog()
+        btnOrder.setOnClickListener { view ->
+            val user = FirebaseAuth.getInstance().currentUser
+            if (user == null) {
+                startActivity(Intent(this@MealDetailsActivity, LogInActivity::class.java))
+            } else {
+                showPlaceOrderDialog()
+            }
         }
     }
 

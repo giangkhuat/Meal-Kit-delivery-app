@@ -8,5 +8,6 @@ data class recipe (
     var instruction: String = "",
     var nutrition : String = "",
     var category : Int = -1,
-    var price : Double = 0.0
+    var price : Double = 0.0,
+    var imageUri : String = ""
 )

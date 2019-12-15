@@ -3,13 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
     tools:context=".ui.main.DirectionsTab">
 
-    <TextView
-        android:id="@+id/tvDirectionsTab"
+    <ScrollView
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="First tab"
-        android:textSize="40sp"/>
+        android:scrollbars="vertical">
+        <TextView
+            android:id="@+id/tvDirectionsTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="First tab"
+            android:scrollbars="vertical"
+            android:textSize="26sp"/>
+    </ScrollView>
+
 
 </FrameLayout>

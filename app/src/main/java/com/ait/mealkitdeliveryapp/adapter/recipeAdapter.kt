@@ -11,11 +11,12 @@ import com.ait.mealkitdeliveryapp.ExploreActivity
 import com.ait.mealkitdeliveryapp.MealDetailsActivity
 import com.ait.mealkitdeliveryapp.R
 import com.ait.mealkitdeliveryapp.data.recipe
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.recipe_card.view.*
 import java.util.*
 
 class recipeAdapter(
-private val context: Context?
+private val context: Context
 ) : RecyclerView.Adapter<recipeAdapter.ViewHolder>() {
 
     var recipeList  = mutableListOf<recipe>()
@@ -44,6 +45,8 @@ private val context: Context?
         holder.tvProduct_name.setText(recipe.name)
         holder.tvDescription.setText(recipe.description)
         holder.tvPrice.setText(recipe.price.toString())
+
+        Glide.with(context).load(recipe.imageUri).into(holder.ivImage)
 
         holder.recipeCard.setOnClickListener{
             //intent

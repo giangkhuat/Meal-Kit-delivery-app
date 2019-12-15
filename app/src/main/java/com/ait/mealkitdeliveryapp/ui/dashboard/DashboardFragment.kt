@@ -1,5 +1,6 @@
 package com.ait.mealkitdeliveryapp.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ait.mealkitdeliveryapp.LogInActivity
 import com.ait.mealkitdeliveryapp.MealDetailsActivity
 import com.ait.mealkitdeliveryapp.adapter.orderAdapter
 import com.ait.mealkitdeliveryapp.data.order
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 import com.ait.mealkitdeliveryapp.R
+import com.google.firebase.auth.FirebaseUser
 
 
 class DashboardFragment : Fragment() {
@@ -36,11 +39,10 @@ class DashboardFragment : Fragment() {
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
+        checkUserLogIn()
 
         return root
     }
-
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,17 +55,18 @@ class DashboardFragment : Fragment() {
         linLayoutManager.stackFromEnd = true
 
         view.recyclerOrder.layoutManager = linLayoutManager
-        // Set adapter
         view.recyclerOrder.adapter = userOrderAdapter
 
-        /*
-        Authenticate user
-        Only user can see their own orders
-         */
         queryOrders()
 
     }
 
+    fun checkUserLogIn() {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            startActivity(Intent(activity, LogInActivity::class.java))
+        }
+    }
 
     fun queryOrders() {
         val db = FirebaseFirestore.getInstance()
