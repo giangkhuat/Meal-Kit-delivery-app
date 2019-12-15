@@ -26,15 +26,38 @@ class NotificationsFragment : Fragment() {
             ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_notifications, container, false)
         var animation = AnimationUtils.loadAnimation(activity, R.anim.dropdown)
-        root.tvTestQ.setOnClickListener{
-            if (root.tvTestA.visibility == View.GONE){
-                root.tvTestA.visibility = View.VISIBLE
-                root.tvTestA.animation = animation
+
+        root.tvQ1.setOnClickListener{
+            if (root.tvAnswer1.visibility == View.GONE){
+                root.tvAnswer1.visibility = View.VISIBLE
+                root.tvAnswer1.animation = animation
             } else {
-                root.tvTestA.visibility = View.GONE
+                root.tvAnswer1.visibility = View.GONE
             }
 
         }
+
+
+        root.tvQ2.setOnClickListener{
+            if (root.tvAnswer2.visibility == View.GONE){
+                root.tvAnswer2.visibility = View.VISIBLE
+                root.tvAnswer2.animation = animation
+            } else {
+                root.tvAnswer2.visibility = View.GONE
+            }
+
+        }
+
+        root.tvQ3.setOnClickListener{
+            if (root.tvAnswer3.visibility == View.GONE){
+                root.tvAnswer3.visibility = View.VISIBLE
+                root.tvAnswer3.animation = animation
+            } else {
+                root.tvAnswer3.visibility = View.GONE
+            }
+
+        }
+
         return root
     }
 }

@@ -28,8 +28,8 @@ class SplashActivity : AppCompatActivity() {
                 }
 
                 override fun onAnimationEnd(p0: Animation?) {
-                    logo.visibility = View.VISIBLE
-                    logo.startAnimation(fadeIn)
+                    logoImg.visibility = View.VISIBLE
+                    logoImg.startAnimation(fadeIn)
                 }
 
                 override fun onAnimationStart(p0: Animation?) {
