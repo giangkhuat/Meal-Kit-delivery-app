@@ -35,9 +35,10 @@ class orderAdapter(private val context: Context?, private val uid: String) : Rec
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var item = orderList.get(holder.adapterPosition)
         holder.orderName.text = item.recipeName.toString()
-        holder.price.text = item.cost.toString()
-        holder.orderAmount.text = item.quantity.toString()
+        holder.price.text = "Cost: " + item.cost.toString()
+        holder.orderAmount.text = "Amt: " + item.quantity.toString()
         holder.address.text = item.address.toString()
+        holder.orderDate.text = "Order Date: " + item.dateOrder
         holder.btnDel.setOnClickListener() {
             // deleteItem(holder.adapterPosition)
         }
@@ -57,6 +58,7 @@ class orderAdapter(private val context: Context?, private val uid: String) : Rec
         var btnDel = itemView.btnDelete
         var orderAmount = itemView.tvAmount
         var address = itemView.tvAddress
+        var orderDate = itemView.tvOrderDate
     }
 
     /*

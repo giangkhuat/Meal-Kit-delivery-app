@@ -47,8 +47,8 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_action_home"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        app:srcCompat="@drawable/user"
+        app:layout_constraintBottom_toBottomOf="@+id/app_bar"
         app:layout_constraintRight_toRightOf="@+id/app_bar"/>
 
     <TextView
