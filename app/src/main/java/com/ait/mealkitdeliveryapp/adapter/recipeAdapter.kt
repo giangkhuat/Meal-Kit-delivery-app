@@ -44,7 +44,7 @@ private val context: Context
 
         holder.tvProduct_name.setText(recipe.name)
         holder.tvDescription.setText(recipe.description)
-        holder.tvPrice.setText(recipe.price.toString())
+        holder.tvPrice.setText("Price: " + recipe.price.toString())
 
         Glide.with(context).load(recipe.imageUri).into(holder.ivImage)
 
