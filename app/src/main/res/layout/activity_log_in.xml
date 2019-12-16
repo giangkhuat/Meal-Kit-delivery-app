@@ -17,8 +17,8 @@
         android:background="#f6e7ce">
 
         <ImageView android:src="@drawable/cookingeasy"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 
@@ -57,7 +57,9 @@
             android:layout_marginBottom="12dp"
             android:padding="12dp"
             android:onClick="loginClick"
-            android:text="Login"/>
+            android:text="Login"
+            android:background="#8a664c"
+            android:textColor="#FFFFFF"/>
 
         <Button
             android:id="@+id/btnRegister"
@@ -65,7 +67,9 @@
             android:layout_height="wrap_content"
             android:padding="12dp"
             android:onClick="registerClick"
-            android:text="Register"/>
+            android:text="Register"
+            android:background="#8a664c"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 </ScrollView>
