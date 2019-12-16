@@ -92,7 +92,7 @@ class MealDetailsActivity : AppCompatActivity() {
             })
 
 
-            positiveButton(text = "Place Order") { dialog ->
+            positiveButton(text = getString(R.string.place_order_btn)) { dialog ->
 
                 var order = order(
                     FirebaseAuth.getInstance().currentUser!!.uid,
@@ -112,7 +112,7 @@ class MealDetailsActivity : AppCompatActivity() {
                 }
 
             }
-            negativeButton(text = "Cancel")
+            negativeButton(text = getString(R.string.cancel_order_btn))
         }
         dialog.show()
     }

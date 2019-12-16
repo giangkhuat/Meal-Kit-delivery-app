@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MealKitDeliveryApp</string>
+    <string name="app_name">Cooking Easy</string>
     <string name="title_activity_explore">ExploreActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_meal_details">MealDetailsActivity</string>
@@ -19,4 +19,15 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_logout">Logging Out</string>
+    <string name="mes_logout">Are you sure you want to log out ?</string>
+    <string name="positive_logout">Ok</string>
+    <string name="negative_logout">Cancel</string>
+    <string name="register_mes">Let\'s begin the foodie journey !</string>
+    <string name="form_error">This field can not be empty</string>
+    <string name="form_pass_error">This field can not be empty</string>
+    <string name="invalid_form_mes">Form is invalid</string>
+    <string name="logged_in_mes">You are logged in</string>
+    <string name="cancel_order_btn">Cancel</string>
+    <string name="place_order_btn">Place Order</string>
 </resources>

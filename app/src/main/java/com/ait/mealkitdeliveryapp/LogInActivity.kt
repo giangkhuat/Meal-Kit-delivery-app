@@ -17,17 +17,14 @@ class LogInActivity : AppCompatActivity() {
     }
 
     fun loginClick(v: View) {
-        // if user is validated
-        // then open another activity
-        // else give error message
         if (!isFormValid()) {
-            Toast.makeText(this@LogInActivity, "Form is invalid", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@LogInActivity, getString(R.string.invalid_form_mes), Toast.LENGTH_LONG).show()
             return
         }
         FirebaseAuth.getInstance().signInWithEmailAndPassword(
             etEmail.text.toString(), etPassword.text.toString()
         ). addOnSuccessListener {
-            Toast.makeText(this@LogInActivity, "You are logged in", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@LogInActivity, getString(R.string.logged_in_mes), Toast.LENGTH_LONG).show()
             // open forum activity
             finish()
             startActivity(Intent(this@LogInActivity, ExploreActivity::class.java))
@@ -43,8 +40,6 @@ class LogInActivity : AppCompatActivity() {
         if (!isFormValid()) {
             return
         }
-        // if not, we allow registration and extract name from email
-        // update user profile
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
             etEmail.text.toString(), etPassword.text.toString()
         ).addOnSuccessListener {
@@ -54,10 +49,8 @@ class LogInActivity : AppCompatActivity() {
                     .setDisplayName(userNameFromEmail(etEmail.text.toString()))
                     .build()
             )
-            // if sccess, update profile and show message
-            Toast.makeText(this@LogInActivity, "Let's begin the foodie journey !", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@LogInActivity, getString(R.string.register_mes), Toast.LENGTH_LONG).show()
         }.addOnFailureListener {
-            // handle rror
             Toast.makeText(this@LogInActivity, "ErrorL ${it.message}", Toast.LENGTH_LONG).show()
 
         }
@@ -68,11 +61,11 @@ class LogInActivity : AppCompatActivity() {
     private fun isFormValid() : Boolean {
         return when {
             etEmail.text.isEmpty() -> {
-                etEmail.error = "This field can not be empty"
+                etEmail.error = getString(R.string.form_error)
                 false
             }
             etPassword.text.isEmpty() -> {
-                etPassword.error = "This field can not be empty"
+                etPassword.error = getString(R.string.form_pass_error)
                 false
             }
             else -> true

@@ -36,10 +36,6 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-       // val textView: TextView = root.findViewById(R.id.text_home)
-       // homeViewModel.text.observe(this, Observer {
-        //    textView.text = it
-        //})
         return root
     }
 
@@ -68,43 +64,18 @@ class HomeFragment : Fragment() {
         }
         queryPosts()
     }
-/*
 
-    private fun uploadRecipe() {
-        var recipeObj = recipe(
-            /* user id */
-            //FirebaseAuth.getInstance().currentUser!!.uid,
-            //FirebaseAuth.getInstance().currentUser!!.displayName!!,
-            "Nama Chocolate",
-            "Milk, Sugar",
-            "",
-            "Carb a lot",
-            "Dairy",
-            0, 9.0
-        )
-
-        val db = FirebaseFirestore.getInstance()
-        /* collection is the folder in database */
-        var recipeCollection = db.collection("recipes")
-        recipeCollection.add(recipeObj).addOnSuccessListener {
-            Toast.makeText(this@Explore, "Success creating post", Toast.LENGTH_LONG).show()
-            finish()
-        }.addOnFailureListener {
-            Toast.makeText(this@Explore, "Error : ${it.message}", Toast.LENGTH_LONG).show()
-        }
-    }
- */
     fun showLogoutDialog(context: Context){
         val dialog: MaterialDialog = MaterialDialog(context).show {
             cornerRadius(16f)
-            title(text = "Logging Out")
-            message(text = "Are you sure?")
+            title(text = getString(R.string.title_logout))
+            message(text = getString(R.string.mes_logout))
 
-            positiveButton(text = "Ok") { dialog ->
+            positiveButton(text = getString(R.string.positive_logout)) { dialog ->
                 FirebaseAuth.getInstance().signOut()
             }
 
-            negativeButton(text = "Cancel")
+            negativeButton(text = getString(R.string.negative_logout))
         }
     }
 

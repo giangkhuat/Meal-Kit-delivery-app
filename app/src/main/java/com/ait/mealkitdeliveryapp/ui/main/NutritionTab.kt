@@ -12,8 +12,6 @@ import kotlinx.android.synthetic.main.fragment_nutrition_tab.view.*
 class NutritionTab(var nutrition: String): Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-//        tvIngredientsTab.text = ingredients
         val root = inflater!!.inflate(R.layout.fragment_nutrition_tab, container, false)
         root.tvNutritionTab.setText(nutrition.replace("~!", System.lineSeparator()))
         return root

@@ -12,8 +12,6 @@ import kotlinx.android.synthetic.main.fragment_directions_tab.view.*
 class DirectionsTab(var directions: String): Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-//        tvIngredientsTab.text = ingredients
         val root = inflater!!.inflate(R.layout.fragment_directions_tab, container, false)
         root.tvDirectionsTab.setText(directions.replace("~!", System.lineSeparator()))
         return root
