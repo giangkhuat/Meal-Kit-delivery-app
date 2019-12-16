@@ -5,6 +5,8 @@ Author: Giang Khuat & Michelle Cheng
 
 This is a Android application that allows users to create accounts, select recipes and order the ingredients to be delivered to their houses. Users can track, cancel or modify their orders. 
 
+
+
 #  Description
 The application aims to shorten the amount of time cookers need to spend on commuting, choosing, and purchasing grocries. 
 
